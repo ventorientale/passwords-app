@@ -1,4 +1,4 @@
-export interface DateBase {
+export interface DataBase {
   get(key: string): any;
 
   set(key: string, data: any): void;

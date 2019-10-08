@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {PasswordsListService} from '../../services/passwords-list.service';
+import {PasswordItemInterface} from '../../interfaces/password-item.interface';
 
 @Component({
   selector: 'app-passwords-manager',
@@ -6,20 +8,16 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./passwords-manager.component.scss']
 })
 export class PasswordsManagerComponent implements OnInit {
-  passwords: Array<{ title: string, password: string }> = [
-    {title: 'Amazon', password: '123'},
-    {title: 'Amazon', password: '123'},
-    {title: 'Amazon', password: '123'},
-    {title: 'Amazon', password: '123'},
-    {title: 'Amazon', password: '123'},
-    {title: 'Amazon', password: '123'},
-    {title: 'Amazon', password: '123'},
-  ];
+  passwords: PasswordItemInterface[] = [];
 
-  constructor() {
+  constructor(private passwordService: PasswordsListService) {
   }
 
   ngOnInit() {
+    this.passwordService.getAllPasswords()
+      .subscribe((passwords: PasswordItemInterface[]) => {
+        this.passwords = passwords;
+      });
   }
 
 }

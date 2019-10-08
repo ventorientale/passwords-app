@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DataBaseService } from './data-base.service';
+import { PasswordsListService } from './passwords-list.service';
 
-describe('DateBaseService', () => {
+describe('PasswordsListService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: DataBaseService = TestBed.get(DataBaseService);
+    const service: PasswordsListService = TestBed.get(PasswordsListService);
     expect(service).toBeTruthy();
   });
 });
