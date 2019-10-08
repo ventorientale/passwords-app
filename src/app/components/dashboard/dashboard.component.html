@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  <span>Passwords Manager</span>
+  <span class="spacer"></span>
+  <mat-icon aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
+  <mat-icon aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
+</mat-toolbar>
+
+<mat-drawer-container class="container" autosize>
+  <mat-drawer #drawer opened class="sidenav" mode="side">
+    <p>Auto-resizing sidenav</p>
+  </mat-drawer>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>

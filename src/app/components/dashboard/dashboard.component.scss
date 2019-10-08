@@ -1,0 +1,27 @@
+:host {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.container {
+  flex: 1 1 auto;
+
+  .sidenav {
+    padding: 1rem;
+  }
+
+  .content {
+    padding: 2rem;
+    display: flex;
+    height: 100%;
+    box-sizing: border-box;
+  }
+}
+
