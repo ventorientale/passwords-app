@@ -16,7 +16,7 @@ export class PasswordsListService {
       {title: 'Amazon', login: '1234', password: '1234', url: 'amazon.com', icon: 'fitness_center'},
       {title: 'Amazon', login: '1234', password: '1234', url: 'amazon.com', icon: 'room_service'},
       {title: 'Amazon', login: '1234', password: '1234', url: 'amazon.com', icon: 'emoji_emotions'},
-      {title: 'Amazon', login: '1234', password: '1234', url: 'amazon.com', icon: 'all_inclusive'},
+      {title: 'Amazon', login: '1234', password: '1234', url: 'amazon.com', icon: ''},
       {title: 'Amazon', login: '1234', password: '1234', url: 'amazon.com', icon: 'room_service'},
       {title: 'Amazon', login: '1234', password: '1234', url: 'amazon.com', icon: 'all_inclusive'},
     ]);

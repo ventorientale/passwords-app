@@ -9,6 +9,7 @@ import {PasswordItemInterface} from '../../interfaces/password-item.interface';
 })
 export class PasswordsManagerComponent implements OnInit {
   passwords: PasswordItemInterface[] = [];
+  selectedPasswordIndex: number;
 
   constructor(private passwordService: PasswordsListService) {
   }
