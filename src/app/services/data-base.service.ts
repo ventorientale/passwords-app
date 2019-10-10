@@ -55,4 +55,8 @@ export class DataBaseService {
   push(path: Array<string>, data: any) {
     this.getRef(path).push(data);
   }
+
+  delete(path: Array<string>): Promise<any> {
+    return this.getRef(path).remove();
+  }
 }
