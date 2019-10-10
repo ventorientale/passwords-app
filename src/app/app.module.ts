@@ -8,7 +8,7 @@ import {MaterialModule} from './modules/material/material.module';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PasswordsManagerComponent } from './components/passwords-manager/passwords-manager.component';
-import {MatCardModule, MatIconModule, MatListModule, MatRippleModule, MatSidenavModule} from '@angular/material';
+import {MatCardModule, MatIconModule, MatListModule, MatMenuModule, MatRippleModule, MatSidenavModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import {MatCardModule, MatIconModule, MatListModule, MatRippleModule, MatSidenav
     MatSidenavModule,
     MatCardModule,
     MatListModule,
-    MatRippleModule
+    MatRippleModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

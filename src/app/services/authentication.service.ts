@@ -12,6 +12,7 @@ import {User} from '../entities/user';
 import {browser} from 'protractor';
 import {ProfileOptions} from '../interfaces/profile-options';
 import {ENCRYPTION_NONE} from '../constants/encryption-types';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ import {ENCRYPTION_NONE} from '../constants/encryption-types';
 export class AuthenticationService {
   firebase: App;
 
-  constructor(private db: DataBaseService, private userService: UserService) {
+  constructor(private db: DataBaseService, private userService: UserService, private router: Router) {
     this.firebase = db.firebaseApp;
   }
 
@@ -50,5 +51,6 @@ export class AuthenticationService {
 
   logout() {
     this.userService.removeFromStorage();
+    return this.router.navigate(['login']);
   }
 }

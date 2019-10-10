@@ -1,19 +1,18 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" *ngIf="user">
   <span>Passwords Manager</span>
   <span class="spacer"></span>
-  <button mat-icon-button routerLink="login" *ngIf="!user" aria-label="Example icon-button with a heart icon">
-    <mat-icon>assignment_ind</mat-icon>
+  <button mat-button [matMenuTriggerFor]="userMenu">
+    <img class="profile-photo" [src]="user.photoUrl" [alt]="user.displayName">
+    {{user.displayName}}
   </button>
-  <button mat-icon-button (click)="authenticationService.logout()" *ngIf="user"
-          aria-label="Example icon-button with a heart icon">
-    <mat-icon>exit_to_app</mat-icon>
-  </button>
+  <mat-menu #userMenu="matMenu">
+    <button (click)="authenticationService.logout()" mat-menu-item>Logout</button>
+  </mat-menu>
 </mat-toolbar>
 
 <mat-drawer-container class="container" *ngIf="user" autosize>
   <mat-drawer #drawer opened class="sidenav" mode="side">
     <p>{{user.displayName}}</p>
-    <img style="width: 12rem;" [src]="user.photoUrl" [alt]="user.displayName">
   </mat-drawer>
 
   <div class="content">
