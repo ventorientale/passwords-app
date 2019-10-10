@@ -10,6 +10,8 @@ import UserCredential = firebase.auth.UserCredential;
 import {UserService} from './user.service';
 import {User} from '../entities/user';
 import {browser} from 'protractor';
+import {ProfileOptions} from '../interfaces/profile-options';
+import {ENCRYPTION_NONE} from '../constants/encryption-types';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +34,16 @@ export class AuthenticationService {
   signUpByProvider(provider: AuthProvider): Promise<any> {
     return this.db.firebaseApp.auth().signInWithPopup(provider).then((result: UserCredential) => {
       this.userService.authenticate(new User(result.user.uid, result.user.displayName, '', result.user.photoURL));
+      this.db.get(['options']).then((value) => {
+        if (!value) {
+          this.db.set<ProfileOptions>(['options'], {
+            encryption: ENCRYPTION_NONE,
+            lastAuthenticationTimestamp: (new Date()).getTime()
+          });
+          return;
+        }
+        this.db.set<number>(['options', 'lastAuthenticationTimestamp'], (new Date()).getTime());
+      });
       return result;
     });
   }

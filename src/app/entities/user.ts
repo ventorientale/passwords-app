@@ -1,4 +1,4 @@
-import {UserInterface} from './user-interface';
+import {UserInterface} from '../interfaces/user-interface';
 
 export class User implements UserInterface {
 

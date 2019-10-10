@@ -44,7 +44,11 @@ export class DataBaseService {
     return result;
   }
 
-  set(path: Array<string>, data: any): void {
+  get(path: Array<string>): Promise<any> {
+    return this.getRef(path).once('value').then((value: DataSnapshot) => value.val());
+  }
+
+  set<T>(path: Array<string>, data: T): void {
     this.getRef(path).set(data);
   }
 
