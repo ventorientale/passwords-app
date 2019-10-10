@@ -9,13 +9,15 @@ import { AuthenticationComponent } from './components/authentication/authenticat
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PasswordsManagerComponent } from './components/passwords-manager/passwords-manager.component';
 import {MatCardModule, MatIconModule, MatListModule, MatMenuModule, MatRippleModule, MatSidenavModule} from '@angular/material';
+import { BackgroundComponent } from './components/background/background.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthenticationComponent,
     DashboardComponent,
-    PasswordsManagerComponent
+    PasswordsManagerComponent,
+    BackgroundComponent
   ],
   imports: [
     BrowserModule,
