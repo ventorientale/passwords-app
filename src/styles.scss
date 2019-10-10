@@ -1,4 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+ul.menu {
+  list-style: none;
+  padding: 0;
+}
+
+.button-group {
+  button {
+    box-shadow: 0 0;
+    min-width: 0;
+
+    &:first-child {
+      border-right: 0 none;
+      border-radius: 4px 0 0 4px;
+      padding-right: .5rem;
+    }
+
+    &:last-child {
+      border-radius: 0 4px 4px 0;
+      padding-left: .5rem;
+    }
+
+    &:not(:last-child, :first-child) {
+      border-radius: 0;
+      padding-left: .5rem;
+      padding-right: .5rem;
+    }
+
+  }
+}

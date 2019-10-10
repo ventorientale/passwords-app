@@ -8,7 +8,6 @@ import {MaterialModule} from './modules/material/material.module';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PasswordsManagerComponent } from './components/passwords-manager/passwords-manager.component';
-import {MatCardModule, MatIconModule, MatListModule, MatMenuModule, MatRippleModule, MatSidenavModule} from '@angular/material';
 import { BackgroundComponent } from './components/background/background.component';
 import {HttpClientModule} from '@angular/common/http';
 
@@ -24,14 +23,8 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatCardModule,
-    MatListModule,
-    MatRippleModule,
-    MatMenuModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
