@@ -8,7 +8,7 @@ import {PasswordsManagerComponent} from './components/passwords-manager/password
 const routes: Routes = [
   {
 
-    path: 'logine',
+    path: 'login',
     component: AuthenticationComponent,
   },
   {

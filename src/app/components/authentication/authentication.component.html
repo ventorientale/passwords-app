@@ -1,8 +1,8 @@
 <div class="auth-content">
   <div class="frame">
     <h2>Authentication Required</h2>
-    <button mat-raised-button color="primary">Open Data Base</button>
+    <button mat-raised-button color="primary" (click)="authenticateByGoogle()">By Google</button>
     <span>Or</span>
-    <button mat-raised-button color="accent">Create New</button>
+    <button mat-raised-button color="accent" (click)="authenticateByFacebook()">By Facebook</button>
   </div>
 </div>

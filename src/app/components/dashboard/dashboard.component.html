@@ -1,13 +1,19 @@
 <mat-toolbar color="primary">
   <span>Passwords Manager</span>
   <span class="spacer"></span>
-  <mat-icon aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
-  <mat-icon aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
+  <button mat-icon-button routerLink="login" *ngIf="!user" aria-label="Example icon-button with a heart icon">
+    <mat-icon>assignment_ind</mat-icon>
+  </button>
+  <button mat-icon-button (click)="authenticationService.logout()" *ngIf="user"
+          aria-label="Example icon-button with a heart icon">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
 </mat-toolbar>
 
-<mat-drawer-container class="container" autosize>
+<mat-drawer-container class="container" *ngIf="user" autosize>
   <mat-drawer #drawer opened class="sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
+    <p>{{user.displayName}}</p>
+    <img style="width: 12rem;" [src]="user.photoUrl" [alt]="user.displayName">
   </mat-drawer>
 
   <div class="content">
