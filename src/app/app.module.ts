@@ -10,6 +10,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PasswordsManagerComponent } from './components/passwords-manager/passwords-manager.component';
 import {MatCardModule, MatIconModule, MatListModule, MatMenuModule, MatRippleModule, MatSidenavModule} from '@angular/material';
 import { BackgroundComponent } from './components/background/background.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { BackgroundComponent } from './components/background/background.componen
     MatCardModule,
     MatListModule,
     MatRippleModule,
-    MatMenuModule
+    MatMenuModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

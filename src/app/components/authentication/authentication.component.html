@@ -1,9 +1,19 @@
 <div class="auth-content">
  <app-background></app-background>
   <div class="frame">
-    <h2>Authentication Required</h2>
-    <button mat-raised-button color="primary" (click)="authenticateByGoogle()">By Google</button>
-    <span>Or</span>
-    <button mat-raised-button color="accent" (click)="authenticateByFacebook()">By Facebook</button>
+<!--    <h2>Authentication Required</h2>-->
+    <button mat-button class="authentication-button google" (click)="authenticateByGoogle()">
+      <span class="inner">
+        <mat-icon svgIcon="app-icon-google"></mat-icon>
+      By Google
+      </span>
+    </button>
+<!--    <span>Or</span>-->
+    <button mat-button class="authentication-button facebook" (click)="authenticateByFacebook()">
+     <span class="inner">
+       <mat-icon svgIcon="app-icon-facebook"></mat-icon>
+      By Facebook
+     </span>
+    </button>
   </div>
 </div>

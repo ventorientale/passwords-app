@@ -23,19 +23,7 @@
     }
 
     button {
-      width: 10rem;
-    }
 
-    span {
-      border-radius: 50%;
-      color: #a2adac;
-      border: 1px solid #a2adac;
-      height: 2rem;
-      width: 2rem;
-      margin: 1rem;
-      align-items: center;
-      justify-content: center;
-      display: flex;
     }
   }
 }
@@ -47,4 +35,35 @@
   height: 100%;
   width: 100%;
   background: #f8f8f9;
+}
+
+.authentication-button {
+  border: 1px solid #ffffff;
+  margin-bottom: 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .inner {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 10rem;
+
+    mat-icon {
+      margin: 0 1rem;
+    }
+  }
+
+  &.google {
+    border-color: #d93725;
+    color: #d93725;
+  }
+
+  &.facebook {
+    border-color: #3c599b;
+    color: #3c599b;
+
+  }
 }
