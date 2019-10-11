@@ -1,5 +1,7 @@
 export interface EncryptDecryptInterface {
-  encrypt(key: string, data: string): string;
+  readonly algorithmName: string;
 
-  decrypt(key: string, data: string): string;
+  encrypt(key: CryptoKey, data: string): Promise<string>;
+
+  decrypt(key: CryptoKey, data: string): Promise<string>;
 }
