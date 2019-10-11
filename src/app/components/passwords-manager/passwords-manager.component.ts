@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {PasswordsListService} from '../../services/passwords-list.service';
 import {PasswordItemInterface} from '../../interfaces/password-item.interface';
+import {MatDialog} from '@angular/material';
+import {CreatePasswordComponent} from '../create-password/create-password.component';
 
 @Component({
   selector: 'app-passwords-manager',
@@ -11,7 +13,11 @@ export class PasswordsManagerComponent implements OnInit {
   passwords: PasswordItemInterface[] = [];
   selectedPasswordIndex: number;
 
-  constructor(private passwordService: PasswordsListService) {
+  constructor(
+    private passwordService: PasswordsListService,
+    private matDialog: MatDialog
+  ) {
+
   }
 
   ngOnInit() {
@@ -21,4 +27,7 @@ export class PasswordsManagerComponent implements OnInit {
       });
   }
 
+  showAddDialog() {
+    const dialogRef = this.matDialog.open(CreatePasswordComponent);
+  }
 }
