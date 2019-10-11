@@ -23,6 +23,7 @@ export class PasswordsManagerComponent implements OnInit {
   ngOnInit() {
     this.passwordService.getAllPasswords()
       .subscribe((passwords: PasswordItemInterface[]) => {
+        console.info(passwords)
         this.passwords = passwords;
       });
   }
