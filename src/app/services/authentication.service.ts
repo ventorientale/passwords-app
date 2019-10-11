@@ -9,7 +9,6 @@ import FacebookAuthProvider = firebase.auth.FacebookAuthProvider;
 import UserCredential = firebase.auth.UserCredential;
 import {UserService} from './user.service';
 import {User} from '../entities/user';
-import {browser} from 'protractor';
 import {ProfileOptions} from '../interfaces/profile-options';
 import {ENCRYPTION_NONE} from '../constants/encryption-types';
 import {Router} from '@angular/router';

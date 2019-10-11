@@ -1,6 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BackgroundComponent } from './background.component';
+import {BackgroundComponent} from './background.component';
+import {MaterialModule} from '../../modules/material/material.module';
 
 describe('BackgroundComponent', () => {
   let component: BackgroundComponent;
@@ -8,9 +9,10 @@ describe('BackgroundComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BackgroundComponent ]
+      declarations: [BackgroundComponent],
+      imports: [MaterialModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

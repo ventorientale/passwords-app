@@ -18,7 +18,7 @@ export class DataBaseService {
   dbRefBase?: string = null;
 
   constructor(private userService: UserService) {
-    this.firebaseApp = firebase.initializeApp(environment.firebaseConfig);
+    this.firebaseApp = !firebase.apps.length ? firebase.initializeApp(environment.firebaseConfig) : firebase.app();
     this.db = firebase.database();
     this.userService.user.subscribe((user) => {
       this.dbRefBase = user ? 'data/' + user.userId : null;

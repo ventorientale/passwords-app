@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PasswordsManagerComponent } from './passwords-manager.component';
+import {MaterialModule} from '../../modules/material/material.module';
 
 describe('PasswordsManagerComponent', () => {
   let component: PasswordsManagerComponent;
@@ -8,7 +9,8 @@ describe('PasswordsManagerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PasswordsManagerComponent ]
+      declarations: [ PasswordsManagerComponent ],
+      imports: [MaterialModule]
     })
     .compileComponents();
   }));
