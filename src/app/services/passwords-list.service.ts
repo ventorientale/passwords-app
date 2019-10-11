@@ -1,24 +1,21 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {PasswordItemInterface} from '../interfaces/password-item.interface';
+import {DataBaseService} from './data-base.service';
+import {DB_PASSWORDS_DATA_PATH} from '../constants/db-pathes';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PasswordsListService {
 
-  constructor() {
+  constructor(private db: DataBaseService) {
   }
 
   getAllPasswords(): Observable<PasswordItemInterface[]> {
-    return of([
-      {title: 'Amazon', login: '1234', password: '1234', url: 'amazon.com', icon: 'emoji_emotions'},
-      {title: 'Amazon', login: '1234', password: '1234', url: 'amazon.com', icon: 'fitness_center'},
-      {title: 'Amazon', login: '1234', password: '1234', url: 'amazon.com', icon: 'room_service'},
-      {title: 'Amazon', login: '1234', password: '1234', url: 'amazon.com', icon: 'emoji_emotions'},
-      {title: 'Amazon', login: '1234', password: '1234', url: 'amazon.com', icon: ''},
-      {title: 'Amazon', login: '1234', password: '1234', url: 'amazon.com', icon: 'room_service'},
-      {title: 'Amazon', login: '1234', password: '1234', url: 'amazon.com', icon: 'all_inclusive'},
-    ]);
+    // return of([
+    //   {title: 'Amazon', login: '1234', password: '1234', url: 'amazon.com', icon: 'emoji_emotions'},
+    // ]);
+    return this.db.watch(DB_PASSWORDS_DATA_PATH);
   }
 }
