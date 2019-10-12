@@ -79,8 +79,10 @@ describe('CreatePasswordComponent', () => {
 
   it('should be saved', fakeAsync(() => {
     const passwordListMockedService = fixture.debugElement.injector.get(PasswordsListService);
-
     const addPasswordSpy = spyOn(passwordListMockedService, 'addPassword');
+
+    const dialogRef = fixture.debugElement.injector.get(MatDialogRef);
+    const spyClose = spyOn(dialogRef, 'close');
 
     const expectValue: PasswordItemInterface = {
       icon: fixture.componentInstance.password.icon,
@@ -96,6 +98,7 @@ describe('CreatePasswordComponent', () => {
     fixture.detectChanges();
 
     expect(addPasswordSpy).toHaveBeenCalledWith(expectValue);
+    expect(spyClose).toHaveBeenCalled();
   }));
 });
 
