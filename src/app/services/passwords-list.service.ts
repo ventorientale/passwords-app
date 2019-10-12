@@ -6,6 +6,7 @@ import {DB_PASSWORDS_DATA_PATH} from '../constants/db-pathes';
 import {transform} from '../modules/transformer-operator/operators/transform';
 import {PasswordListTransformerService} from '../transformers/password-list-transformer.service';
 import {PasswordItemWrapperInterface} from '../interfaces/password-item-wrapper-interface';
+import {skip} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class PasswordsListService {
 
   getAllPasswords(): Observable<PasswordItemWrapperInterface[]> {
     return this.db.watch(DB_PASSWORDS_DATA_PATH)
-      .pipe(transform(PasswordListTransformerService));
+      .pipe(skip(1), transform(PasswordListTransformerService));
   }
 
   addPassword(password: PasswordItemInterface) {

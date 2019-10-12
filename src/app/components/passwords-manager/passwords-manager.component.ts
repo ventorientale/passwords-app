@@ -11,7 +11,7 @@ import {PasswordItemWrapperInterface} from '../../interfaces/password-item-wrapp
   styleUrls: ['./passwords-manager.component.scss']
 })
 export class PasswordsManagerComponent implements OnInit {
-  passwords: PasswordItemWrapperInterface[] = [];
+  passwords: PasswordItemWrapperInterface[];
   selectedPasswordIndex: number;
 
   constructor(
