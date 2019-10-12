@@ -10,7 +10,7 @@ import UserCredential = firebase.auth.UserCredential;
 import {UserService} from './user.service';
 import {User} from '../entities/user';
 import {ProfileOptions} from '../interfaces/profile-options';
-import {ENCRYPTION_NONE} from '../constants/encryption-types';
+import {ENCRYPTION_AES_CBC, ENCRYPTION_NONE} from '../constants/encryption-types';
 import {Router} from '@angular/router';
 
 @Injectable({
@@ -37,7 +37,7 @@ export class AuthenticationService {
       this.db.get(['options']).then((value) => {
         if (!value) {
           this.db.set<ProfileOptions>(['options'], {
-            encryption: ENCRYPTION_NONE,
+            encryption: ENCRYPTION_AES_CBC,
             lastAuthenticationTimestamp: (new Date()).getTime()
           });
           return;

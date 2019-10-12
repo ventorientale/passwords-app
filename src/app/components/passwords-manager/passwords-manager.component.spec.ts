@@ -1,7 +1,19 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PasswordsManagerComponent } from './passwords-manager.component';
+import {PasswordsManagerComponent} from './passwords-manager.component';
 import {MaterialModule} from '../../modules/material/material.module';
+import {PasswordsListService} from '../../services/passwords-list.service';
+import {PasswordItemInterface} from '../../interfaces/password-item.interface';
+import {Observable, of} from 'rxjs';
+
+class MockPasswordList {
+  addPassword(password: PasswordItemInterface): void {
+  }
+
+  getAllPasswords(): Observable<PasswordItemInterface[]> {
+    return of([]);
+  }
+}
 
 describe('PasswordsManagerComponent', () => {
   let component: PasswordsManagerComponent;
@@ -9,10 +21,11 @@ describe('PasswordsManagerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PasswordsManagerComponent ],
-      imports: [MaterialModule]
+      declarations: [PasswordsManagerComponent],
+      imports: [MaterialModule],
+      providers: [{provide: PasswordsListService, useClass: MockPasswordList}]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -2,6 +2,8 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import {ENCRYPTION_AES_CBC} from '../app/constants/encryption-types';
+
 export const environment = {
   production: false,
   firebaseConfig: {
@@ -12,7 +14,8 @@ export const environment = {
     storageBucket: '',
     messagingSenderId: '349391034347',
     appId: '1:349391034347:web:897b033f37517917902bae'
-  }
+  },
+  defaultEncryptionDriver: ENCRYPTION_AES_CBC
 };
 
 /*

@@ -11,12 +11,16 @@ class MockAes extends AesAbstract {
     return '';
   }
 
-  public exportResultToJson(value: Uint8Array, iv: Uint8Array): string {
+  public exportResultToJson(value: ArrayBuffer, iv: Uint8Array): string {
     return super.exportResultToJson(value, iv);
   }
 
   public importResultFromJson(str: string): { value: Uint8Array; iv: Uint8Array } {
     return super.importResultFromJson(str);
+  }
+
+  protected getConfig(iv: ArrayBuffer): AesCbcParams | AesCtrParams | AesGcmParams {
+    return undefined;
   }
 }
 
