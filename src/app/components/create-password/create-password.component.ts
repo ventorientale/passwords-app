@@ -29,5 +29,6 @@ export class CreatePasswordComponent implements OnInit {
 
   save() {
     this.passwordService.addPassword(this.password);
+    this.dialogRef.close();
   }
 }

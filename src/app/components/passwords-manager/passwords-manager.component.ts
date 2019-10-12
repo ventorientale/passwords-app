@@ -31,4 +31,9 @@ export class PasswordsManagerComponent implements OnInit {
   showAddDialog() {
     const dialogRef = this.matDialog.open(CreatePasswordComponent);
   }
+
+  deletePassword(password: PasswordItemWrapperInterface) {
+    this.passwordService.deletePassword(password);
+  }
 }
+

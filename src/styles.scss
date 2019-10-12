@@ -35,6 +35,11 @@ ul.menu {
       padding-left: .5rem;
       padding-right: .5rem;
     }
-
   }
+}
+
+button.floating-button {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
 }

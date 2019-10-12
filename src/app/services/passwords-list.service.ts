@@ -23,4 +23,8 @@ export class PasswordsListService {
   addPassword(password: PasswordItemInterface) {
     this.db.push(DB_PASSWORDS_DATA_PATH, password);
   }
+
+  deletePassword(password: PasswordItemWrapperInterface) {
+    this.db.delete([...DB_PASSWORDS_DATA_PATH, password.key]);
+  }
 }
