@@ -16,7 +16,7 @@ export class PasswordListTransformerService implements TransformerInterface<Inpu
   }
 
   transform(data: Input): Output {
-    return Object.keys(data).map((key) => this.transformItem(key, data[key]));
+    return data ? Object.keys(data).map((key) => this.transformItem(key, data[key])) : null;
   }
 
   transformItem(key: string, item: PasswordItemInterface): PasswordItemWrapperInterface {
