@@ -3,6 +3,7 @@ import {PasswordsListService} from '../../services/passwords-list.service';
 import {PasswordItemInterface} from '../../interfaces/password-item.interface';
 import {MatDialog} from '@angular/material';
 import {CreatePasswordComponent} from '../create-password/create-password.component';
+import {PasswordItemWrapperInterface} from '../../interfaces/password-item-wrapper-interface';
 
 @Component({
   selector: 'app-passwords-manager',
@@ -10,7 +11,7 @@ import {CreatePasswordComponent} from '../create-password/create-password.compon
   styleUrls: ['./passwords-manager.component.scss']
 })
 export class PasswordsManagerComponent implements OnInit {
-  passwords: PasswordItemInterface[] = [];
+  passwords: PasswordItemWrapperInterface[] = [];
   selectedPasswordIndex: number;
 
   constructor(
@@ -22,7 +23,7 @@ export class PasswordsManagerComponent implements OnInit {
 
   ngOnInit() {
     this.passwordService.getAllPasswords()
-      .subscribe((passwords: PasswordItemInterface[]) => {
+      .subscribe((passwords: PasswordItemWrapperInterface[]) => {
         this.passwords = passwords;
       });
   }

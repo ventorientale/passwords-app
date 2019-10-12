@@ -11,6 +11,7 @@ import {PasswordsManagerComponent} from './components/passwords-manager/password
 import {BackgroundComponent} from './components/background/background.component';
 import {HttpClientModule} from '@angular/common/http';
 import {CreatePasswordComponent} from './components/create-password/create-password.component';
+import {TransformerOperatorModule} from './modules/transformer-operator/transformer-operator.module';
 
 @NgModule({
   declarations: [
@@ -26,11 +27,13 @@ import {CreatePasswordComponent} from './components/create-password/create-passw
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    TransformerOperatorModule
   ],
   providers: [],
   entryComponents: [CreatePasswordComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+
 }

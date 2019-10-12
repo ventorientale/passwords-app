@@ -1,9 +1,11 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {PasswordItemInterface} from '../interfaces/password-item.interface';
 import {DataBaseService} from './data-base.service';
 import {DB_PASSWORDS_DATA_PATH} from '../constants/db-pathes';
-import {map, tap} from 'rxjs/operators';
+import {transform} from '../modules/transformer-operator/operators/transform';
+import {PasswordListTransformerService} from '../transformers/password-list-transformer.service';
+import {PasswordItemWrapperInterface} from '../interfaces/password-item-wrapper-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +15,9 @@ export class PasswordsListService {
   constructor(private db: DataBaseService) {
   }
 
-  getAllPasswords(): Observable<PasswordItemInterface[]> {
-    // return of([
-    //   {title: 'Amazon', login: '1234', password: '1234', url: 'amazon.com', icon: 'emoji_emotions'},
-    // ]);
-    return this.db.watch(DB_PASSWORDS_DATA_PATH).pipe(map((value) => value ? Object.values(value) : value));
+  getAllPasswords(): Observable<PasswordItemWrapperInterface[]> {
+    return this.db.watch(DB_PASSWORDS_DATA_PATH)
+      .pipe(transform(PasswordListTransformerService));
   }
 
   addPassword(password: PasswordItemInterface) {
