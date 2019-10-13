@@ -2,7 +2,7 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-import {ENCRYPTION_AES_CBC} from '../app/constants/encryption-types';
+import {ENCRYPTION_AES_CTR} from '../app/constants/encryption-types';
 
 export const environment = {
   production: false,
@@ -15,7 +15,7 @@ export const environment = {
     messagingSenderId: '349391034347',
     appId: '1:349391034347:web:897b033f37517917902bae'
   },
-  defaultEncryptionDriver: ENCRYPTION_AES_CBC
+  defaultEncryptionDriver: ENCRYPTION_AES_CTR
 };
 
 /*

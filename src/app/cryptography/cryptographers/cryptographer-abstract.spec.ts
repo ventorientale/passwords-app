@@ -1,6 +1,6 @@
-import {CryptoAbstract} from './crypto-abstract';
+import {CryptographerAbstract} from './cryptographer-abstract';
 
-export class MockClass extends CryptoAbstract {
+export class MockClass extends CryptographerAbstract {
   algorithmName = '';
 
   async decrypt(key: CryptoKey, data: string): Promise<string> {

@@ -1,7 +1,7 @@
-import {EncryptDecryptInterface} from '../interfaces/encrypt-decrypt-interface';
-import {CryptoAbstract} from './crypto-abstract';
+import {EncryptionDriverInterface} from '../../interfaces/encryption-driver-interface';
+import {CryptographerAbstract} from './cryptographer-abstract';
 
-export abstract class AesAbstract extends CryptoAbstract implements EncryptDecryptInterface {
+export abstract class AesAbstract extends CryptographerAbstract implements EncryptionDriverInterface {
   abstract readonly algorithmName: string;
 
   protected abstract getConfig(iv: ArrayBuffer): AesCbcParams | AesCtrParams | AesGcmParams;

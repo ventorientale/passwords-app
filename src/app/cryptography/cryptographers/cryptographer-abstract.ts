@@ -1,6 +1,6 @@
-import {EncryptDecryptInterface} from '../interfaces/encrypt-decrypt-interface';
+import {EncryptionDriverInterface} from '../../interfaces/encryption-driver-interface';
 
-export abstract class CryptoAbstract implements EncryptDecryptInterface {
+export abstract class CryptographerAbstract implements EncryptionDriverInterface {
   abstract readonly algorithmName: string;
 
   protected textEncoder: TextEncoder = new TextEncoder();

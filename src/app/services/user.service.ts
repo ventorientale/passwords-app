@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {StorageService} from './storage.service';
 import {UserInterface} from '../interfaces/user-interface';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 import {USER_STORAGE_KEY} from '../constants/user-consts';
 
 @Injectable({

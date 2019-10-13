@@ -1,5 +1,5 @@
 import {AesCbc} from './aes-cbc';
-import {testAesEncryption} from '../../tests/crypto/functions';
+import {testAesEncryption} from '../../../tests/crypto/functions';
 
 describe('AesCbc', () => {
   it('should create an instance', () => {

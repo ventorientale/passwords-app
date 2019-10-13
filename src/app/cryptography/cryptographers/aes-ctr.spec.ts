@@ -1,7 +1,5 @@
 import {AesCtr} from './aes-ctr';
-import any = jasmine.any;
-import {testAesEncryption} from '../../tests/crypto/functions';
-import {AesCbc} from './aes-cbc';
+import {testAesEncryption} from '../../../tests/crypto/functions';
 
 describe('AesCtr', () => {
   it('should create an instance', () => {

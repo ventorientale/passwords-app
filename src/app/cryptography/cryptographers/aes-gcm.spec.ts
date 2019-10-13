@@ -1,5 +1,5 @@
 import { AesGcm } from './aes-gcm';
-import {testAesEncryption} from '../../tests/crypto/functions';
+import {testAesEncryption} from '../../../tests/crypto/functions';
 import {AesCbc} from './aes-cbc';
 
 describe('AesGcm', () => {

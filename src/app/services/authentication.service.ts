@@ -12,6 +12,8 @@ import {User} from '../entities/user';
 import {ProfileOptions} from '../interfaces/profile-options';
 import {ENCRYPTION_AES_CBC, ENCRYPTION_NONE} from '../constants/encryption-types';
 import {Router} from '@angular/router';
+import {EncryptionService} from './encryption.service';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +21,12 @@ import {Router} from '@angular/router';
 export class AuthenticationService {
   firebase: App;
 
-  constructor(private db: DataBaseService, private userService: UserService, private router: Router) {
+  constructor(
+    private db: DataBaseService,
+    private userService: UserService,
+    private router: Router,
+    private encryptionService: EncryptionService
+  ) {
     this.firebase = db.firebaseApp;
   }
 
@@ -34,11 +41,12 @@ export class AuthenticationService {
   signUpByProvider(provider: AuthProvider): Promise<any> {
     return this.db.firebaseApp.auth().signInWithPopup(provider).then((result: UserCredential) => {
       this.userService.authenticate(new User(result.user.uid, result.user.displayName, '', result.user.photoURL));
-      this.db.get(['options']).then((value) => {
+      this.db.get(['options']).then((value: ProfileOptions) => {
         if (!value) {
           this.db.set<ProfileOptions>(['options'], {
-            encryption: ENCRYPTION_AES_CBC,
-            lastAuthenticationTimestamp: (new Date()).getTime()
+            encryption: environment.defaultEncryptionDriver,
+            lastAuthenticationTimestamp: (new Date()).getTime(),
+            passwordSalt: this.encryptionService.generateSalt()
           });
           return;
         }
