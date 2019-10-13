@@ -13,6 +13,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {CreatePasswordComponent} from './components/create-password/create-password.component';
 import {TransformerOperatorModule} from './modules/transformer-operator/transformer-operator.module';
 import {FormsModule} from '@angular/forms';
+import { PasswordViewComponent } from './components/password-view/password-view.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {FormsModule} from '@angular/forms';
     DashboardComponent,
     PasswordsManagerComponent,
     BackgroundComponent,
-    CreatePasswordComponent
+    CreatePasswordComponent,
+    PasswordViewComponent
   ],
   imports: [
     BrowserModule,

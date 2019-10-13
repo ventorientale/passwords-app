@@ -24,16 +24,13 @@ export class PasswordsManagerComponent implements OnInit {
   ngOnInit() {
     this.passwordService.getAllPasswords()
       .subscribe((passwords: PasswordItemWrapperInterface[]) => {
+        this.selectedPasswordIndex = undefined;
         this.passwords = passwords;
       });
   }
 
   showAddDialog() {
     const dialogRef = this.matDialog.open(CreatePasswordComponent);
-  }
-
-  deletePassword(password: PasswordItemWrapperInterface) {
-    this.passwordService.deletePassword(password);
   }
 }
 
