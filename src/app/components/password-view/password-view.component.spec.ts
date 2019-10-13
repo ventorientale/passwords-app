@@ -1,6 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PasswordViewComponent } from './password-view.component';
+import {PasswordViewComponent} from './password-view.component';
+import {MaterialModule} from '../../modules/material/material.module';
 
 describe('PasswordViewComponent', () => {
   let component: PasswordViewComponent;
@@ -8,9 +9,10 @@ describe('PasswordViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PasswordViewComponent ]
+      declarations: [PasswordViewComponent],
+      imports: [MaterialModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

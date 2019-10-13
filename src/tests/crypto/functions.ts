@@ -1,4 +1,4 @@
-import {AesAbstract} from '../../app/crypto/aes-abstract';
+import {AesAbstract} from '../../app/cryptography/cryptographers/aes-abstract';
 
 export async function generateKey(algorithm: string) {
   return await window.crypto.subtle.generateKey(

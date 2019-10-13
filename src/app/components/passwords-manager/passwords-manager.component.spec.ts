@@ -5,6 +5,7 @@ import {MaterialModule} from '../../modules/material/material.module';
 import {PasswordsListService} from '../../services/passwords-list.service';
 import {PasswordItemInterface} from '../../interfaces/password-item.interface';
 import {Observable, of} from 'rxjs';
+import {PasswordViewComponent} from '../password-view/password-view.component';
 
 class MockPasswordList {
   addPassword(password: PasswordItemInterface): void {
@@ -21,7 +22,7 @@ describe('PasswordsManagerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PasswordsManagerComponent],
+      declarations: [PasswordsManagerComponent, PasswordViewComponent],
       imports: [MaterialModule],
       providers: [{provide: PasswordsListService, useClass: MockPasswordList}]
     })
