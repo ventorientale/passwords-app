@@ -27,6 +27,7 @@ export class EncryptionService {
   }
 
   encrypt(data: string): Promise<string> {
+    return undefined;
   }
 
   createKey(password: string, salt: string) {
