@@ -1,1 +1,1 @@
-export type ConstructorOf<T> = new() => T;
+export type ConstructorOf<T> = new(...args: any) => T;

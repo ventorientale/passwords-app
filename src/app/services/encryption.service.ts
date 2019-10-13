@@ -7,6 +7,8 @@ import {environment} from '../../environments/environment';
 import {AesCtrKeyDriver} from '../cryptography/key-drivers/aes-ctr-key-driver';
 import {EncryptionOptionInterface} from '../interfaces/encryption-option-interface';
 import {EncryptionKeyGeneratorInterface} from '../interfaces/encryption-key-generator-interface';
+import {UserService} from './user.service';
+import {UserInterface} from '../interfaces/user-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,23 +17,34 @@ export class EncryptionService {
   encryptionDrivers: StringKeyOf<EncryptionOptionInterface> = {
     [ENCRYPTION_AES_CTR]: {driver: AesCtr, keyDriver: AesCtrKeyDriver},
   };
-
+  key: CryptoKey;
   driver: EncryptionDriverInterface = new this.encryptionDrivers[environment.defaultEncryptionDriver].driver();
   keyGenerator: EncryptionKeyGeneratorInterface = new this.encryptionDrivers[environment.defaultEncryptionDriver].keyDriver();
 
-  constructor() {
+  constructor(userService: UserService) {
+    userService.user.subscribe((user: UserInterface) => {
+      if (user) {
+        this.createKey(user.accessToken, user.userId);
+      }
+    });
   }
 
   decrypt(data: string): Promise<string> {
-    return undefined;
+    if (!this.key) {
+      throw new Error('Key not provided');
+    }
+    return this.driver.decrypt(this.key, data);
   }
 
   encrypt(data: string): Promise<string> {
-    return undefined;
+    if (!this.key) {
+      throw new Error('Key not provided');
+    }
+    return this.driver.encrypt(this.key, data);
   }
 
-  createKey(password: string, salt: string) {
-    return this.keyGenerator.fromPassword(password, salt);
+  async createKey(password: string, salt: string) {
+    this.key = await this.keyGenerator.fromPassword(password, salt);
   }
 
   generateSalt() {

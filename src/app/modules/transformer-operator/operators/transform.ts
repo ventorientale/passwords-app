@@ -1,4 +1,4 @@
-import {TransformerInterface} from '../../../interfaces/transformer-interface';
+import {TransformerInterface} from '../interfaces/transformer-interface';
 import {Observable, OperatorFunction} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ConstructorOf} from '../../../types/constructor-of';
