@@ -6,9 +6,16 @@
     "start": "ng serve",
     "build-production": "ng build --prod --output-path ./dist/production",
     "test": "ng test",
+    "test-silent": "ng test --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-production-and-deploy": "yarn build-production && firebase deploy"
+    "build-production-and-deploy": "ng build --prod --output-path ./dist/production && firebase deploy"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "ng lint && ng test --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox",
+      "post-commit": "yarn update-build"
+    }
   },
   "private": true,
   "dependencies": {
@@ -25,6 +32,7 @@
     "aes-js": "^3.1.2",
     "firebase": "^7.1.0",
     "hammerjs": "^2.0.8",
+    "husky": "^3.0.9",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
