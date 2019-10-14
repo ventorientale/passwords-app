@@ -8,7 +8,6 @@ import {AuthenticationGuard} from './guards/authentication.guard';
 
 const routes: Routes = [
   {
-
     path: 'login',
     component: AuthenticationComponent,
   },
@@ -22,7 +21,8 @@ const routes: Routes = [
         component: PasswordsManagerComponent,
       }
     ]
-  }
+  },
+  {path: '**', redirectTo: ''}
 ];
 
 @NgModule({
