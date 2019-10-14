@@ -9,6 +9,10 @@ import {EncryptionOptionInterface} from '../interfaces/encryption-option-interfa
 import {EncryptionKeyGeneratorInterface} from '../interfaces/encryption-key-generator-interface';
 import {UserService} from './user.service';
 import {UserInterface} from '../interfaces/user-interface';
+import {switchMap} from 'rxjs/operators';
+import {DataBaseService} from './data-base.service';
+import {DB_OPTIONS_SALT} from '../constants/db-pathes';
+import {fromPromise} from 'rxjs/internal-compatibility';
 
 @Injectable({
   providedIn: 'root'
@@ -20,27 +24,53 @@ export class EncryptionService {
   key: CryptoKey;
   driver: EncryptionDriverInterface = new this.encryptionDrivers[environment.defaultEncryptionDriver].driver();
   keyGenerator: EncryptionKeyGeneratorInterface = new this.encryptionDrivers[environment.defaultEncryptionDriver].keyDriver();
+  awaitingKey: Promise<any>;
 
-  constructor(userService: UserService) {
-    userService.user.subscribe((user: UserInterface) => {
-      if (user) {
-        this.createKey(user.accessToken, user.userId);
-      }
-    });
+  constructor(userService: UserService, private db: DataBaseService) {
+    userService.user
+      .subscribe((user: UserInterface) => {
+        if (!user) {
+          this.key = null;
+          return;
+        }
+        this.awaitingKey = this.generateKeyFromUser(user);
+      });
   }
 
-  decrypt(data: string): Promise<string> {
+  protected async generateKeyFromUser(user) {
+    if (!user) {
+      throw new Error('User not logged in');
+    }
+    return await this.createKey(user.userId, await this.getSaltFromDB(user));
+
+  }
+
+  protected async getSaltFromDB(user) {
+    return !user ? null : await this.db.get(DB_OPTIONS_SALT);
+  }
+
+  protected async awaitKey() {
+    try {
+      await this.awaitingKey;
+    } catch (e) {
+      throw new Error('Key not provided');
+    }
+  }
+
+  async decrypt(data: string): Promise<string> {
+    await this.awaitingKey;
     if (!this.key) {
       throw new Error('Key not provided');
     }
-    return this.driver.decrypt(this.key, data);
+    return await this.driver.decrypt(this.key, data);
   }
 
-  encrypt(data: string): Promise<string> {
+  async encrypt(data: string): Promise<string> {
+    await this.awaitingKey;
     if (!this.key) {
       throw new Error('Key not provided');
     }
-    return this.driver.encrypt(this.key, data);
+    return await this.driver.encrypt(this.key, data);
   }
 
   async createKey(password: string, salt: string) {

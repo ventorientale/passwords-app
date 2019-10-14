@@ -6,7 +6,7 @@ import {AsyncTransformerInterface} from '../modules/transformer-operator/interfa
 import {UserService} from '../services/user.service';
 import {EncryptionService} from '../services/encryption.service';
 
-export type Input = StringKeyOf<string | PasswordItemInterface>;
+export type Input = StringKeyOf<string>;
 export type Output = PasswordItemWrapperInterface[];
 
 @Injectable({
@@ -21,13 +21,16 @@ export class PasswordListTransformerService implements AsyncTransformerInterface
     return data ? await Promise.all(Object.keys(data).map((key) => this.transformItem(key, data[key]))) : null;
   }
 
-  async transformItem(key: string, item: string | PasswordItemInterface): Promise<PasswordItemWrapperInterface> {
-    if ('string' === typeof item) {
-      item = JSON.parse(await this.encryptionService.decrypt(item)) as PasswordItemInterface;
-    }
-    if (!item) {
+  async transformItem(key: string, item: string): Promise<PasswordItemWrapperInterface> {
+    let decrypted: PasswordItemInterface = null;
+    try {
+      decrypted = JSON.parse(await this.encryptionService.decrypt(item)) as PasswordItemInterface;
+    } catch (e) {
       throw new Error('encryption failed');
     }
-    return {key, item};
+    if (!decrypted) {
+      throw new Error('decrypted value cannot be null');
+    }
+    return {key, item: decrypted};
   }
 }
