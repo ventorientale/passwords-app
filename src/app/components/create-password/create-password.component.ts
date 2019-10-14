@@ -17,7 +17,7 @@ export class CreatePasswordComponent implements OnInit {
     login: '',
     password: '',
     url: '',
-    icon: 'emoji_emotions'
+    icon: 'vpn_key'
   };
 
   constructor(
