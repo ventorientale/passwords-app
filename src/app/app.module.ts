@@ -14,6 +14,7 @@ import {CreatePasswordComponent} from './components/create-password/create-passw
 import {TransformerOperatorModule} from './modules/transformer-operator/transformer-operator.module';
 import {FormsModule} from '@angular/forms';
 import { PasswordViewComponent } from './components/password-view/password-view.component';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PasswordViewComponent } from './components/password-view/password-view.
     PasswordsManagerComponent,
     BackgroundComponent,
     CreatePasswordComponent,
-    PasswordViewComponent
+    PasswordViewComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,7 @@ import { PasswordViewComponent } from './components/password-view/password-view.
     FormsModule
   ],
   providers: [],
-  entryComponents: [CreatePasswordComponent],
+  entryComponents: [CreatePasswordComponent, ConfirmationComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

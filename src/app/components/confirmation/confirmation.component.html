@@ -1,0 +1,9 @@
+<h2>{{data.title}}</h2>
+<p>{{data.message}}</p>
+<div class="buttons">
+  <button (click)="bottomSheetRef.dismiss(false)" color="accent" mat-raised-button
+          *ngIf="data.cancel">{{data.cancel}}</button>
+  <span class="spacer"></span>
+  <button (click)="bottomSheetRef.dismiss(true)" color="accent" mat-stroked-button
+          *ngIf="data.submit">{{data.submit}}</button>
+</div>
