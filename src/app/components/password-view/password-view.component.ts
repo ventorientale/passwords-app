@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {PasswordItemWrapperInterface} from '../../interfaces/password-item-wrapper-interface';
 import {PasswordsListService} from '../../services/passwords-list.service';
 import {ConfirmationService} from '../../services/confirmation.service';
+// @ts-ignore
+import * as copy from 'clipboard-copy';
 
 @Component({
   selector: 'app-password-view',
@@ -29,5 +31,9 @@ export class PasswordViewComponent implements OnInit {
       }
       this.passwordService.deletePassword(password);
     });
+  }
+
+  copyToClipboard() {
+    copy(this.password.item.password);
   }
 }
