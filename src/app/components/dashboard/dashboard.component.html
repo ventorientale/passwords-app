@@ -2,7 +2,7 @@
   <button mat-icon-button style="margin-right: 1rem" (click)="drawer.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
-  <span>Passwords Manager</span>
+  <span *ngIf="!mobileQuery.matches">Passwords Manager</span>
   <span class="spacer"></span>
   <button mat-button [matMenuTriggerFor]="userMenu">
     <img class="profile-photo" [src]="user.photoUrl" [alt]="user.displayName">
@@ -14,7 +14,7 @@
 </mat-toolbar>
 
 <mat-drawer-container class="container" autosize>
-  <mat-drawer #drawer opened mode="side">
+  <mat-drawer #drawer [opened]="!mobileQuery.matches" [mode]="mobileQuery.matches ? 'over' : 'side'">
     <ul class="menu">
       <li>
         <div class="button-group">
