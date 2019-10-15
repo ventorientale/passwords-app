@@ -4,6 +4,8 @@ import {UserService} from '../../services/user.service';
 import {AuthenticationService} from '../../services/authentication.service';
 import {MediaMatcher} from '@angular/cdk/layout';
 import {SCREEN_SIZE_MOBILE_MAX} from '../../constants/screen-sizes';
+import {ExportService} from '../../services/export.service';
+import {PasswordsListService} from '../../services/passwords-list.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,6 +22,7 @@ export class DashboardComponent implements OnInit {
     public authenticationService: AuthenticationService,
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
+    public exportService: ExportService
   ) {
     userService.user.subscribe((user: UserInterface) => this.user = user);
     this.mobileQuery = media.matchMedia(`(max-width: ${SCREEN_SIZE_MOBILE_MAX})`);
@@ -29,5 +32,4 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

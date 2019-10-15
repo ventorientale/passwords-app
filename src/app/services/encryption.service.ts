@@ -49,14 +49,6 @@ export class EncryptionService {
     return !user ? null : await this.db.get(DB_OPTIONS_SALT);
   }
 
-  protected async awaitKey() {
-    try {
-      await this.awaitingKey;
-    } catch (e) {
-      throw new Error('Key not provided');
-    }
-  }
-
   async decrypt(data: string): Promise<string> {
     await this.awaitingKey;
     if (!this.key) {
@@ -75,6 +67,10 @@ export class EncryptionService {
 
   async createKey(password: string, salt: string) {
     this.key = await this.keyGenerator.fromPassword(password, salt);
+  }
+
+  async exportKey(): Promise<string> {
+    return await this.keyGenerator.export(this.key);
   }
 
   generateSalt() {

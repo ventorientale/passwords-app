@@ -18,11 +18,18 @@
     <ul class="menu">
       <li>
         <div class="button-group">
-          <button mat-raised-button color="primary">Download All my data</button>
-          <button mat-raised-button color="primary">
+          <button mat-raised-button color="primary" (click)="exportService.exportRawDataFromAccount()">
+            Download All my data
+          </button>
+          <button mat-raised-button color="primary" [matMenuTriggerFor]="exportMenu">
             <mat-icon>expand_more</mat-icon>
           </button>
         </div>
+        <mat-menu #exportMenu="matMenu" xPosition="before">
+          <button (click)="exportService.exportDecryptedPasswords()" mat-menu-item>Export Decrypted Passwords</button>
+          <button (click)="exportService.exportEncryptedPasswords()" mat-menu-item>Export Encrypted Passwords</button>
+          <button (click)="exportService.exportKeyToJson()" mat-menu-item>Export Encryption Key</button>
+        </mat-menu>
       </li>
     </ul>
   </mat-drawer>

@@ -11,12 +11,12 @@ class MockAes extends AesAbstract {
     return '';
   }
 
-  public exportResultToJson(value: ArrayBuffer, iv: Uint8Array): string {
-    return super.exportResultToJson(value, iv);
+  public exportResultToString(value: ArrayBuffer, iv: Uint8Array): string {
+    return super.exportResultToString(value, iv);
   }
 
-  public importResultFromJson(str: string): { value: Uint8Array; iv: Uint8Array } {
-    return super.importResultFromJson(str);
+  public importResultFromString(str: string): { value: Uint8Array; iv: Uint8Array } {
+    return super.importResultFromString(str);
   }
 
   protected getConfig(iv: ArrayBuffer): AesCbcParams | AesCtrParams | AesGcmParams {
@@ -33,7 +33,7 @@ describe('AesAbstract', () => {
     const aes = new MockAes();
     const value = window.crypto.getRandomValues(new Uint8Array(100));
     const iv = window.crypto.getRandomValues(new Uint8Array(16));
-    const json = aes.exportResultToJson(value, iv);
-    expect(aes.importResultFromJson(json)).toEqual({value, iv});
+    const str = aes.exportResultToString(value, iv);
+    expect(aes.importResultFromString(str)).toEqual({value, iv});
   });
 });

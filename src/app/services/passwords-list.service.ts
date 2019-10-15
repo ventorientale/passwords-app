@@ -5,21 +5,30 @@ import {DataBaseService} from './data-base.service';
 import {DB_PASSWORDS_DATA_PATH} from '../constants/db-pathes';
 import {PasswordListTransformerService} from '../transformers/password-list-transformer.service';
 import {PasswordItemWrapperInterface} from '../interfaces/password-item-wrapper-interface';
-import {skip, skipWhile} from 'rxjs/operators';
+import {skipWhile, tap} from 'rxjs/operators';
 import {asyncTransform} from '../modules/transformer-operator/operators/async-transform';
 import {EncryptionService} from './encryption.service';
+import {ExportService} from './export.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PasswordsListService {
+  lastPasswords: PasswordItemWrapperInterface[] = null;
 
-  constructor(private db: DataBaseService, private encryption: EncryptionService) {
+  constructor(
+    private db: DataBaseService,
+    private encryption: EncryptionService,
+  ) {
   }
 
   getAllPasswords(): Observable<PasswordItemWrapperInterface[]> {
     return this.db.watch(DB_PASSWORDS_DATA_PATH)
-      .pipe(skipWhile((value, index) => index === 0 && value === null), asyncTransform(PasswordListTransformerService));
+      .pipe(
+        skipWhile((value, index) => index === 0 && value === null),
+        asyncTransform(PasswordListTransformerService),
+        tap((passwords: PasswordItemWrapperInterface[]) => this.lastPasswords = passwords)
+      );
   }
 
   async addPassword(password: PasswordItemInterface) {

@@ -18,4 +18,14 @@ export abstract class CryptographerAbstract implements EncryptionDriverInterface
   protected decodeBuffer(value: ArrayBuffer): string {
     return this.decoder.decode(value);
   }
+
+  protected toHexString(value: Uint8Array): string {
+    return Array.from(value).map((v) => v.toString(16).padStart(2, '0')).join('');
+  }
+
+
+  protected fromHexString(value: string): Uint8Array {
+    return new Uint8Array(value.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+  }
+
 }
