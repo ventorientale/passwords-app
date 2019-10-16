@@ -4,6 +4,7 @@ import {PasswordsListService} from '../../services/passwords-list.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {PasswordGeneratorService} from '../../services/password-generator.service';
 import {PasswordItemWrapperInterface} from '../../interfaces/password-item-wrapper-interface';
+import {PASSWORD_ICONS} from '../../constants/password-icons';
 
 @Component({
   selector: 'app-create-password',
@@ -21,6 +22,7 @@ export class CreatePasswordComponent implements OnInit {
     url: '',
     icon: 'vpn_key'
   };
+  availableIcons = PASSWORD_ICONS;
 
   constructor(
     private passwordService: PasswordsListService,
