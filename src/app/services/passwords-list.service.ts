@@ -38,4 +38,8 @@ export class PasswordsListService {
   deletePassword(password: PasswordItemWrapperInterface) {
     this.db.delete([...DB_PASSWORDS_DATA_PATH, password.key]);
   }
+
+  async updatePassword(password: PasswordItemInterface, key: string) {
+    this.db.set([...DB_PASSWORDS_DATA_PATH, key], await this.encryption.encrypt(JSON.stringify(password)));
+  }
 }

@@ -4,6 +4,8 @@ import {PasswordsListService} from '../../services/passwords-list.service';
 import {ConfirmationService} from '../../services/confirmation.service';
 // @ts-ignore
 import * as copy from 'clipboard-copy';
+import {CreatePasswordComponent} from '../create-password/create-password.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-password-view',
@@ -14,7 +16,11 @@ export class PasswordViewComponent implements OnInit {
   @Input() password: PasswordItemWrapperInterface;
   hide = true;
 
-  constructor(private passwordService: PasswordsListService, private confirmationService: ConfirmationService) {
+  constructor(
+    private passwordService: PasswordsListService,
+    private confirmationService: ConfirmationService,
+    private matDialog: MatDialog
+  ) {
   }
 
   ngOnInit() {
@@ -35,5 +41,11 @@ export class PasswordViewComponent implements OnInit {
 
   copyToClipboard() {
     copy(this.password.item.password);
+  }
+
+  showEditDialog() {
+    const dialogRef = this.matDialog.open(CreatePasswordComponent, {
+      data: {password: this.password}
+    });
   }
 }

@@ -3,6 +3,7 @@ import {PasswordItemInterface} from '../../interfaces/password-item.interface';
 import {PasswordsListService} from '../../services/passwords-list.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {PasswordGeneratorService} from '../../services/password-generator.service';
+import {PasswordItemWrapperInterface} from '../../interfaces/password-item-wrapper-interface';
 
 @Component({
   selector: 'app-create-password',
@@ -12,6 +13,7 @@ import {PasswordGeneratorService} from '../../services/password-generator.servic
 export class CreatePasswordComponent implements OnInit {
   hide: boolean;
   passwords: Array<string> = [];
+  key?: string;
   password: PasswordItemInterface = {
     title: '',
     login: '',
@@ -24,8 +26,12 @@ export class CreatePasswordComponent implements OnInit {
     private passwordService: PasswordsListService,
     public dialogRef: MatDialogRef<CreatePasswordComponent>,
     public passwordGenerator: PasswordGeneratorService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: { password?: PasswordItemWrapperInterface }
   ) {
+    if (data && data.password) {
+      this.password = data.password.item;
+      this.key = data.password.key;
+    }
   }
 
   ngOnInit() {
@@ -37,6 +43,11 @@ export class CreatePasswordComponent implements OnInit {
   }
 
   save() {
+    if (this.key) {
+      this.passwordService.updatePassword(this.password, this.key);
+      this.dialogRef.close();
+      return;
+    }
     this.passwordService.addPassword(this.password);
     this.dialogRef.close();
   }
