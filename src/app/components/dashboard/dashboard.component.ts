@@ -6,6 +6,9 @@ import {MediaMatcher} from '@angular/cdk/layout';
 import {SCREEN_SIZE_MOBILE_MAX} from '../../constants/screen-sizes';
 import {ExportService} from '../../services/export.service';
 import {PasswordsListService} from '../../services/passwords-list.service';
+import {PasswordItemWrapperInterface} from '../../interfaces/password-item-wrapper-interface';
+import {ConfirmationService} from '../../services/confirmation.service';
+import {DataBaseService} from '../../services/data-base.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,6 +24,8 @@ export class DashboardComponent implements OnInit {
     userService: UserService,
     public authenticationService: AuthenticationService,
     changeDetectorRef: ChangeDetectorRef,
+    private confirmationService: ConfirmationService,
+    private db: DataBaseService,
     media: MediaMatcher,
     public exportService: ExportService
   ) {
@@ -31,5 +36,19 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  deleteAllData() {
+    this.confirmationService.askConfirmation(
+      'Are you sure?',
+      'All your data will be deleted permanently.',
+      ['Cancel', 'Yes, Delete']
+    ).subscribe((isSubmitted: boolean) => {
+      if (!isSubmitted) {
+        return;
+      }
+      this.db.delete([]);
+      this.authenticationService.logout();
+    });
   }
 }

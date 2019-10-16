@@ -1,4 +1,5 @@
 export const PASSWORD_ICONS = [
+  'vpn_key',
   'star',
   'business',
   'chat',

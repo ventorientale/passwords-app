@@ -15,23 +15,32 @@
 
 <mat-drawer-container class="container" autosize>
   <mat-drawer #drawer [opened]="!mobileQuery.matches" [mode]="mobileQuery.matches ? 'over' : 'side'">
-    <ul class="menu">
-      <li>
-        <div class="button-group">
-          <button mat-raised-button color="primary" (click)="exportService.exportRawDataFromAccount()">
-            Download All my data
-          </button>
-          <button mat-raised-button color="primary" [matMenuTriggerFor]="exportMenu">
-            <mat-icon>expand_more</mat-icon>
-          </button>
-        </div>
-        <mat-menu #exportMenu="matMenu" xPosition="before">
-          <button (click)="exportService.exportDecryptedPasswords()" mat-menu-item>Export Decrypted Passwords</button>
-          <button (click)="exportService.exportEncryptedPasswords()" mat-menu-item>Export Encrypted Passwords</button>
-          <button (click)="exportService.exportKeyToJson()" mat-menu-item>Export Encryption Key</button>
-        </mat-menu>
-      </li>
-    </ul>
+    <div class="menu">
+      <ul class="top">
+        <li>
+          <div class="button-group">
+            <button mat-raised-button color="primary" (click)="exportService.exportRawDataFromAccount()">
+              Download All my data
+            </button>
+            <button mat-raised-button color="primary" [matMenuTriggerFor]="exportMenu">
+              <mat-icon>expand_more</mat-icon>
+            </button>
+          </div>
+          <mat-menu #exportMenu="matMenu" xPosition="before">
+            <button (click)="exportService.exportDecryptedPasswords()" mat-menu-item>Export Decrypted Passwords</button>
+            <button (click)="exportService.exportEncryptedPasswords()" mat-menu-item>Export Encrypted Passwords</button>
+            <button (click)="exportService.exportKeyToJson()" mat-menu-item>Export Encryption Key</button>
+          </mat-menu>
+        </li>
+      </ul>
+      <div class="spacer"></div>
+      <ul class="bottom">
+        <li>
+          <button (click)="deleteAllData()" mat-button color="warn">Erase All My Data</button>
+        </li>
+      </ul>
+    </div>
+
   </mat-drawer>
 
   <div class="content">
