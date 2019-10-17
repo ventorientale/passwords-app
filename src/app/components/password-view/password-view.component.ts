@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {PasswordItemWrapperInterface} from '../../interfaces/password-item-wrapper-interface';
 import {PasswordsListService} from '../../services/passwords-list.service';
 import {ConfirmationService} from '../../services/confirmation.service';
@@ -14,6 +14,7 @@ import {MatDialog} from '@angular/material';
 })
 export class PasswordViewComponent implements OnInit {
   @Input() password: PasswordItemWrapperInterface;
+  @Output() closeView: EventEmitter<null> = new EventEmitter();
   hide = true;
 
   constructor(
