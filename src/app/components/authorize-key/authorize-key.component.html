@@ -1,0 +1,12 @@
+<h2>AES-CTR</h2>
+<mat-form-field>
+  <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+  </button>
+</mat-form-field>
+<div class="flex">
+  Or <button mat-stroked-button color="primary">Import Your Key</button>
+</div>
+<button mat-mini-fab><mat-icon>check</mat-icon></button>

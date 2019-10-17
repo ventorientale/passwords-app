@@ -15,6 +15,7 @@ import {TransformerOperatorModule} from './modules/transformer-operator/transfor
 import {FormsModule} from '@angular/forms';
 import { PasswordViewComponent } from './components/password-view/password-view.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { AuthorizeKeyComponent } from './components/authorize-key/authorize-key.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
     BackgroundComponent,
     CreatePasswordComponent,
     PasswordViewComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    AuthorizeKeyComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,7 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
     FormsModule
   ],
   providers: [],
-  entryComponents: [CreatePasswordComponent, ConfirmationComponent],
+  entryComponents: [CreatePasswordComponent, AuthorizeKeyComponent, ConfirmationComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
