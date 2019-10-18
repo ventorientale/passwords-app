@@ -10,14 +10,10 @@ import {AuthorizeKeyComponent} from './components/authorize-key/authorize-key.co
 export class AppComponent implements OnInit {
   title = 'passwords-app';
 
-  constructor(private matDialog: MatDialog) {
+  constructor() {
 
   }
 
   ngOnInit(): void {
-    this.matDialog.open(AuthorizeKeyComponent, {
-      disableClose: true,
-      closeOnNavigation: false
-    });
   }
 }
