@@ -10,10 +10,10 @@ import UserCredential = firebase.auth.UserCredential;
 import {UserService} from './user.service';
 import {User} from '../entities/user';
 import {ProfileOptions} from '../interfaces/profile-options';
-import {ENCRYPTION_AES_CBC, ENCRYPTION_NONE} from '../constants/encryption-types';
 import {Router} from '@angular/router';
 import {EncryptionService} from './encryption.service';
 import {environment} from '../../environments/environment';
+import GithubAuthProvider = firebase.auth.GithubAuthProvider;
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +32,10 @@ export class AuthenticationService {
 
   authByGoogle(): Promise<UserCredential> {
     return this.signUpByProvider(new GoogleAuthProvider());
+  }
+
+  authByGitHub(): Promise<UserCredential> {
+    return this.signUpByProvider(new GithubAuthProvider());
   }
 
   authByFaceBook(): Promise<UserCredential> {

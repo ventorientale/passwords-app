@@ -25,6 +25,10 @@ export class AuthenticationComponent implements OnInit {
       'app-icon-facebook',
       sanitizer.bypassSecurityTrustResourceUrl('/assets/facebook.svg')
     );
+    iconRegistry.addSvgIcon(
+      'app-icon-git-hub',
+      sanitizer.bypassSecurityTrustResourceUrl('/assets/github.svg')
+    );
   }
 
   ngOnInit() {
@@ -37,4 +41,9 @@ export class AuthenticationComponent implements OnInit {
   authenticateByGoogle() {
     this.authenticationService.authByGoogle().then(() => this.router.navigate(['']));
   }
+
+  authenticateByGitHub() {
+    this.authenticationService.authByGitHub().then(() => this.router.navigate(['']));
+  }
 }
+
