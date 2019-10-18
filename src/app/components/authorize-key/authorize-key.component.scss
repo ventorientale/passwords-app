@@ -1,9 +1,20 @@
 h2 {
+  margin: 0 0 1rem;
+  text-align: center;
+}
+
+h3 {
+  display: flex;
   margin: 0;
+}
+
+p {
+  text-align: center;
 }
 
 mat-form-field {
   margin: 1rem 0;
+  width: 100%;
 }
 
 .flex {
@@ -15,5 +26,17 @@ mat-form-field {
   button {
     margin-left: 1rem;
   }
+}
+
+.flex-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.spacer {
+  flex: 1 1 auto;
+  min-width: 1rem;
 }
 

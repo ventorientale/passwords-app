@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {
   MatBottomSheetModule,
-  MatButtonModule,
+  MatButtonModule, MatCheckboxModule,
   MatDialogModule,
   MatFormFieldModule,
   MatInputModule,
@@ -35,7 +35,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatFormFieldModule,
     MatInputModule,
     MatProgressBarModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatCheckboxModule
   ],
   exports: [
     MatButtonModule,
@@ -51,7 +52,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatFormFieldModule,
     MatInputModule,
     MatProgressBarModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatCheckboxModule
   ]
 })
 export class MaterialModule {

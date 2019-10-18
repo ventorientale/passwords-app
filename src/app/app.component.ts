@@ -15,9 +15,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.matDialog.open(AuthorizeKeyComponent,{
-    //   disableClose: true,
-    //   closeOnNavigation: false
-    // });
+    this.matDialog.open(AuthorizeKeyComponent, {
+      disableClose: true,
+      closeOnNavigation: false
+    });
   }
 }

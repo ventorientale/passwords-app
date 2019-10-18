@@ -1,4 +1,8 @@
-<h2>AES-CTR</h2>
+<h2>
+  AUTHORIZATION
+</h2>
+<h3>Encryption: <span class="spacer"></span>{{algorithm}}</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, doloremque?</p>
 <mat-form-field>
   <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
   <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
@@ -7,6 +11,14 @@
   </button>
 </mat-form-field>
 <div class="flex">
-  Or <button mat-stroked-button color="primary">Import Your Key</button>
+  Or
+  <span class="spacer"></span>
+  <button mat-stroked-button color="primary">Import Your Key</button>
 </div>
-<button mat-mini-fab><mat-icon>check</mat-icon></button>
+<div class="flex-right">
+  <mat-checkbox>Save In Browser Storage</mat-checkbox>
+  <span class="spacer"></span>
+  <button mat-mini-fab>
+    <mat-icon>check</mat-icon>
+  </button>
+</div>
